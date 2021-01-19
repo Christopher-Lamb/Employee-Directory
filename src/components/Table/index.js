@@ -4,9 +4,11 @@ function Table(props) {
   return (
     <div>
       <tr>
-        <th>Image</th>
+        <th></th>
         <th>Name</th>
-        <th>Age</th>
+        <th>Location</th>
+        <th>Phone Number</th>
+        <th>Email</th>
       </tr>
       {props.children}
     </div>

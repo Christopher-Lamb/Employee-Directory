@@ -5,5 +5,5 @@ const NAT = "&nat=us";
 let getEmployeeData = (query) => {
   return axios.get(BASEURL + query + NAT);
 };
-
-export default getEmployeeData;
+// eslint-disable-next-line
+export default { getEmployeeData };
