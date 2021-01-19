@@ -1,15 +1,29 @@
 import React, { Component } from "react";
-// import API from "../utils/API";
+import Table from "../components/Table";
+import Row from "../components/Row";
+import API from "../utils/API";
 
 class Home extends Component {
   state = {
-    image: "",
-    match: false,
-    matchCount: 0,
+    employee: [],
+  };
+
+  getEmployees = (query) => {
+    API.getEmployeeData(query).then((res) => {
+      this.setState({
+        employees: res.data.results,
+      });
+    });
   };
 
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <Table>
+          <Row></Row>
+        </Table>
+      </div>
+    );
   }
 }
 
