@@ -1,15 +1,9 @@
-// import axios from "../../../React/Employee-Directory/node_modules/axios";
+import axios from "axios";
+const BASEURL = "https://randomuser.me/api/?results=";
+const US = "&nat=us";
 
-// // Export an object containing methods we'll use for accessing the Dog.Ceo API
-
-// export default {
-//   getRandomDog: function() {
-//     return axios.get("https://dog.ceo/api/breeds/image/random");
-//   },
-//   getDogsOfBreed: function(breed) {
-//     return axios.get("https://dog.ceo/api/breed/" + breed + "/images");
-//   },
-//   getBaseBreedsList: function() {
-//     return axios.get("https://dog.ceo/api/breeds/list");
-//   }
-// };
+export default {
+  getEmployeeData: function (query) {
+    return axios.get(BASEURL + query + US);
+  },
+};
