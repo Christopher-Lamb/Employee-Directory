@@ -1,3 +1,12 @@
 nav.navbar.navbar-default {
   margin-bottom: 0;
 }
+nav {
+  background: rgba(72, 72, 219, 0.918);
+  height: 70px;
+
+}
+.link,
+.link:hover {
+  color: white;
+}

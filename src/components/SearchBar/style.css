@@ -1,0 +1,13 @@
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+.centerFormInput {
+  margin: auto;
+  width: 66%;
+}
+.centerFormBtn {
+  margin: auto;
+  width: 34%;
+}

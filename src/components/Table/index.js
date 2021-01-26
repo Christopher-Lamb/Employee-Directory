@@ -1,14 +1,15 @@
 import React from "react";
+import "./style.css";
 
 function Table(props) {
   return (
     <div>
       <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Location</th>
-        <th>Phone Number</th>
-        <th>Email</th>
+        <th className="table-header">Name</th>
+        <th className="table-header">Image</th>
+        <th className="table-header">Location</th>
+        <th className="table-header">Phone Number</th>
+        <th className="table-header">Email</th>
       </tr>
       {props.children}
     </div>

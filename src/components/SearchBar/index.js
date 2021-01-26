@@ -1,16 +1,17 @@
 import React, { Component } from "react";
+import "./style.css";
 
 class SearchBarForm extends Component {
-  state = {
-    search: "",
-  };
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      search: "",
+    };
+  }
 
   handleClick = (event) => {
     event.preventDefault();
-
-    this.setState({
-      search: "",
-    });
   };
 
   handleInputChange = (event) => {
@@ -22,20 +23,22 @@ class SearchBarForm extends Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log("Search State: " + this.state.search);
+
     return (
-      <form>
+      <form className="center">
         <input
-          placeholder="Letter"
-          value={this.state.search}
-          name="search"
+          placeholder="Enter Employee Name"
           onChange={this.handleInputChange}
+          name="search"
           type="text"
+          className="centerFormInput"
         ></input>
         <button
-          data-name={this.state.search}
+          data-search={this.state.search}
+          onClick={this.props.handleClick}
           type="submit"
-          onClick={this.handleClick}
+          className="centerFormBtn"
         >
           Submit
         </button>

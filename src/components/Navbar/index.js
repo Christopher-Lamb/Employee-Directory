@@ -5,8 +5,8 @@ import "./style.css";
 // Navbar
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">
+    <nav className="navbar navbar-expand-lg ">
+      <Link className="navbar-brand link" to="/">
         Employee Directory
       </Link>
     </nav>

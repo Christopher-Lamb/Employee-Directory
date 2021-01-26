@@ -4,12 +4,17 @@ import Row from "../components/Row";
 import Col from "../components/Col";
 import SearchBarForm from "../components/SearchBar";
 import API from "../utils/API";
+import "bootstrap/dist/css/bootstrap.css";
 
 class Home extends Component {
-  state = {
-    employees: [],
-    search: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      storedEmployee: [],
+      displayedEmployees: [],
+      search: "",
+    };
+  }
 
   componentDidMount() {
     this.getEmployees(100);
@@ -19,27 +24,53 @@ class Home extends Component {
     API.getEmployeeData(query)
       .then((res) =>
         this.setState({
-          employees: res.data.results,
+          storedEmployees: res.data.results,
+          displayedEmployees: res.data.results,
         })
       )
       .catch((err) => console.log(err));
   };
 
-  sortEmployees = () =>{
-this.state.employees.filter((employee)=>{
+  searchEmployeesBtn = (event) => {
+    event.preventDefault();
 
- 
-})
+    const search = event.target.attributes
+      .getNamedItem("data-search")
+      .value.split("");
+    const length = search.length;
+    console.log(search);
 
-  }
+    const searchedEmployee = this.state.storedEmployees.filter((employee) => {
+      const existingEmp = employee.name.first + " " + employee.name.last;
+      const empArray = existingEmp.split("");
 
+      for (let i = 0; i < length; i++) {
+        if (empArray[i] === search[i]) {
+          continue;
+        } else {
+          return false;
+        }
+      }
+      return true;
+    });
+    console.log(searchedEmployee);
+    this.setState({
+      displayedEmployees: searchedEmployee,
+    });
+  };
 
   render() {
     return (
-      <div>
-        <SearchBarForm ></SearchBarForm>
+      <div style={{ marginTop: "20px" }} className="container">
+        <SearchBarForm
+          className="searchBar"
+          handleClick={this.searchEmployeesBtn}
+        ></SearchBarForm>
+        <p style={{ textAlign: "center" }}>
+          You can search an employee's full name or just search by letter.
+        </p>
         <Table>
-          {this.state.employees.map((employee) => {
+          {this.state.displayedEmployees.map((employee) => {
             return (
               <Row>
                 <Col>
